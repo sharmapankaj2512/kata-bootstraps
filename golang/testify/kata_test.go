@@ -5,8 +5,20 @@ import (
 	"testing"
 )
 
+/*
+ roll(int) ->  The argument is the number of pins knocked down.
+ score()
+*/
+
+// Arrange
+// Act
+// Assert
+
+
 func TestFailing(t *testing.T) {
-	assert.Equal(t, 42, doSomething("a"), "I'm failing you can start with me...")
+
+	Roll(4)
+	assert.Equal(t, 4, Score())
 }
 
 func TestSomething(t *testing.T) {
