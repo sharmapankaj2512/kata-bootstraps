@@ -5,7 +5,7 @@ type game struct {
 }
 
 func (g *game) Roll(amount int) {
-	g.score = amount
+	g.score += amount
 }
 
 func (g *game) Score() int {
