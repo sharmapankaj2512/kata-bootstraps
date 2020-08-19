@@ -5,6 +5,10 @@ type game struct {
 }
 
 func (g *game) Roll(amount int) {
+	if amount > 10 || amount < 0 {
+		return
+	}
+
 	g.score += amount
 }
 
