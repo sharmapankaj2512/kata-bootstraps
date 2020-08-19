@@ -27,5 +27,12 @@ func TestGame_SumScores(t *testing.T) {
 	assert.Equal(t, 9, game.Score())
 }
 
+func TestGame_SkipUpdatingOutOfRange(t *testing.T) {
+	game := &game{}
+
+
+	game.Roll(11)
+	assert.Equal(t,0, game.Score())
+}
 // TODO: validate the amount 0-10
 // TODO: keep track of the score
