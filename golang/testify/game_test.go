@@ -1,22 +1,22 @@
 package kata
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
-func TestGame(t *testing.T) {
-  game := &game{}
+func TestGame_Initial(t *testing.T) {
+	game := &game{}
 
-  game.Roll(4)
-  assert.Equal(t, 4, game.Score())
+	assert.Equal(t, 0, game.Score())
 }
 
-func TestGame2(t *testing.T) {
-  game := &game{}
+func TestGame_FirstRound(t *testing.T) {
+	game := &game{}
 
-  game.Roll(5)
-  assert.Equal(t, 5, game.Score())
+	game.Roll(5)
+	assert.Equal(t, 5, game.Score())
 }
 
 // TODO: validate the amount 0-10
