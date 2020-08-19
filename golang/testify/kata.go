@@ -1,11 +1,13 @@
 package kata
 
-func Roll(pins int) {
-	
+type Game struct {
+	score int
 }
 
-
-func Score() int {
-	return 4;
+func (g *Game) Roll(pins int) {
+	g.score += pins
 }
 
+func (g *Game) Score() int {
+	return g.score
+}

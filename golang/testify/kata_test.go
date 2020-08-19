@@ -1,8 +1,9 @@
 package kata
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
 )
 
 /*
@@ -14,11 +15,20 @@ import (
 // Act
 // Assert
 
+func TestTwoRolls_Success(t *testing.T) {
+	g := Game{}
+	g.Roll(4)
+	g.Roll(10)
+	assert.Equal(t, 14, g.Score())
+}
 
-func TestFailing(t *testing.T) {
-
-	Roll(4)
-	assert.Equal(t, 4, Score())
+func Test_SpareCountsNextRollTwice(t *testing.T) {
+	g := Game{}
+	g.Roll(4)
+	g.Roll(6)
+	assert.Equal(t, 10, g.Score())
+	g.Roll(3)
+	assert.Equal(t, 16, g.Score())
 }
 
 func TestSomething(t *testing.T) {
