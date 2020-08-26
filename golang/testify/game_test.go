@@ -56,13 +56,13 @@ func TestGame_StrikeAsZeroScore(t *testing.T) {
 	assert.Equal(t, 0, game.Score())
 }
 
-func TestGame_StrikeAddUpBonusFromNextRound(t *testing.T) {
+func TestGame_Spare(t *testing.T) {
 	game := &game{}
 
-	game.Roll(10)
-	game.Roll(3)
+	game.Roll(6)
 	game.Roll(4)
-	assert.Equal(t, (10+3+4)+(3+4), game.Score())
+	game.Roll(1)
+	assert.Equal(t, (6+4+1), game.Score())
 }
 
 // TODO: validate the amount 0-10

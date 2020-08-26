@@ -19,10 +19,6 @@ func (g *game) Roll(amount int) {
 		amount *= 2
 	}
 
-	if amount == 3 {
-		amount += 10
-	}
-
 	g.score += amount
 }
 
