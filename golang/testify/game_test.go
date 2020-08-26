@@ -48,9 +48,15 @@ func TestGame_SumInvalidScores(t *testing.T){
 
 	game.Roll(5)
 	game.Roll(4)
-	assert.Equal(t, 7, game.Score())
+	assert.Equal(t, 9, game.Score())
 }
 
+func TestGame_Strike(t *testing.T){
+	game := &game{}
+
+	game.Roll(10)
+	assert.Equal(t, 10, game.Score())
+}
 
 // TODO: validate the amount 0-10
 // TODO: keep track of the score
