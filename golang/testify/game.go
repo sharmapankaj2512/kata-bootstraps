@@ -5,7 +5,7 @@ type game struct {
 }
 
 func (g *game) Roll(amount int) {
-	if amount > 10 || amount < 0 {
+	if amount > 10 || amount < 0 || amount == 10 {
 		return
 	}
 

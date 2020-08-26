@@ -51,11 +51,11 @@ func TestGame_SumInvalidScores(t *testing.T){
 	assert.Equal(t, 9, game.Score())
 }
 
-func TestGame_Strike(t *testing.T){
+func TestGame_StrikeAsZeroScore(t *testing.T){
 	game := &game{}
 
 	game.Roll(10)
-	assert.Equal(t, 10, game.Score())
+	assert.Equal(t, 0, game.Score())
 }
 
 // TODO: validate the amount 0-10
