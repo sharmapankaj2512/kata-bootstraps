@@ -17,6 +17,7 @@ func (g *game) Roll(amount int) {
 
 	if g.strike {
 		amount *= 2
+		g.strike = false
 	}
 
 	g.score += amount
