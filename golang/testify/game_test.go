@@ -62,8 +62,8 @@ func TestGame_SpareWithNextFrame(t *testing.T) {
 	game := &game{}
 
 	game.Roll(6) //
-	game.Roll(4) //spare
-	game.Roll(1)
+	game.Roll(4) // spare
+	game.Roll(1) // double this if last 2 scores > 10
 	game.Roll(5)
 	assert.Equal(t, (6+4+1)+(1+5), game.Score())
 }
