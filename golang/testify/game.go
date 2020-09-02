@@ -10,8 +10,9 @@ func (g *game) Roll(amount int) {
 		return
 	}
 	if g.rollCount == 0 {
-		if g.frames[len(g.frames)-1] == 10{
-			amount = amount * 2
+
+		if len(g.frames) > 0 && g.frames[len(g.frames)-1] == 10 {
+			amount += amount
 		}
 		g.rollCount = 1
 		g.frames = append(g.frames, amount)

@@ -52,10 +52,10 @@ func TestGame_SumInvalidScores(t *testing.T) {
 func TestGame_Spare(t *testing.T) {
 	game := &game{}
 
-	game.Roll(6)
-	game.Roll(4)
-	game.Roll(1)
-	assert.Equal(t, (6 + 4 + 1), game.Score())
+	game.Roll(6) //6
+	game.Roll(4) //4 = 10 (spare)
+	game.Roll(3) // 1*2 =2
+	assert.Equal(t, (6 + 4 + 3), game.Score())
 }
 
 func TestGame_SpareWithNextFrame(t *testing.T) {
