@@ -2,7 +2,6 @@ package kata
 
 type game struct {
 	frames []int
-	score  int
 	strike bool
 }
 
@@ -26,6 +25,8 @@ func (g *game) Roll(amount int) {
 
 func (g *game) Score() int {
 	var total int
-
-	return
+	for  _, f:=range g.frames {
+		total += f
+	}
+	return total
 }
