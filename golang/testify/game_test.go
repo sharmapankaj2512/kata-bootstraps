@@ -58,15 +58,15 @@ func TestGame_Spare(t *testing.T) {
 	assert.Equal(t, (6 + 4 + 1), game.Score())
 }
 
-// func TestGame_SpareWithNextFrame(t *testing.T) {
-// 	game := &game{}
+func TestGame_SpareWithNextFrame(t *testing.T) {
+	game := &game{}
 
-// 	game.Roll(6) //
-// 	game.Roll(4) //spare
-// 	game.Roll(1)
-// 	game.Roll(5)
-// 	assert.Equal(t, (6+4+1)+(1+5), game.Score())
-// }
+	game.Roll(6) //
+	game.Roll(4) //spare
+	game.Roll(1)
+	game.Roll(5)
+	assert.Equal(t, (6+4+1)+(1+5), game.Score())
+}
 
 // TODO: validate the amount 0-10
 // TODO: keep track of the score
