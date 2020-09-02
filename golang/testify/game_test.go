@@ -49,13 +49,6 @@ func TestGame_SumInvalidScores(t *testing.T) {
 	assert.Equal(t, 9, game.Score())
 }
 
-func TestGame_StrikeAsZeroScore(t *testing.T) {
-	game := &game{}
-
-	game.Roll(10)
-	assert.Equal(t, 0, game.Score())
-}
-
 func TestGame_Spare(t *testing.T) {
 	game := &game{}
 
@@ -68,7 +61,7 @@ func TestGame_Spare(t *testing.T) {
 // func TestGame_SpareWithNextFrame(t *testing.T) {
 // 	game := &game{}
 
-// 	game.Roll(6) //spare
+// 	game.Roll(6) //
 // 	game.Roll(4) //spare
 // 	game.Roll(1)
 // 	game.Roll(5)
