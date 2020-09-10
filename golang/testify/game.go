@@ -3,9 +3,11 @@ package kata
 type game struct {
 	score  int
 	strike bool
+	rolls  []int
 }
 
 func (game *game) Roll(fallenPins int) {
+	game.rolls = append(game.rolls, fallenPins)
 
 	if fallenPins > 10 || fallenPins < 0 {
 		return
