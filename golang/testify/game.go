@@ -20,18 +20,25 @@ func (game *game) Score() int {
 	}
 
 	if frameBeforeWasASpare(game) {
-		return scoreWithoutBonus(game) + bonus()
+		return sumOfClosedFrames(game) + bonus()
 	}
 
 	if game.score == 6 {
-		return 4
+		return sumOfClosedFrames(game)
 	}
 
 	return game.score
 }
 
-func scoreWithoutBonus(game *game) int {
-	return game.score
+func sumOfClosedFrames(game *game) int {
+	var sum int
+	for i := 0; i < len(game.rolls); i++ {
+		sum += game.rolls[i]
+	}
+	if len(game.rolls)%2 == 1 {
+		sum -= game.rolls[len(game.rolls)-1]
+	}
+	return sum
 }
 
 func firstFrameNotFinished(game *game) bool {
