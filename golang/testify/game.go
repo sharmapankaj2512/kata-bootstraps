@@ -27,10 +27,21 @@ func (game *game) Roll(fallenPins int) {
 }
 
 func (game *game) Score() int {
+	if thereWasOnlyOneFrame(game) && currentFrameIsASpare(game) {
+		return 0
+	}
 	if frameBeforeWasASpare(game) {
 		return game.score + bonus()
 	}
 	return game.score
+}
+
+func currentFrameIsASpare(game *game) bool {
+	return game.rolls[0]+game.rolls[1] == 10
+}
+
+func thereWasOnlyOneFrame(game *game) bool {
+	return len(game.rolls) == 2
 }
 
 func bonus() int {
