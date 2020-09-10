@@ -18,9 +18,11 @@ func (game *game) Score() int {
 	if thereWasOnlyOneFrame(game) && currentFrameIsASpare(game) {
 		return 0
 	}
+
 	if frameBeforeWasASpare(game) {
 		return scoreWithoutBonus(game) + bonus()
 	}
+
 	return game.score
 }
 
