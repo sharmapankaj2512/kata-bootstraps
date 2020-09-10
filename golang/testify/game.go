@@ -22,7 +22,7 @@ func (game *game) Roll(fallenPins int) {
 }
 
 func (game *game) Score() int {
-	if len(game.rolls) == 1 {
+	if firstFrameNotFinished(game) {
 		return 0
 	}
 
@@ -33,6 +33,10 @@ func (game *game) Score() int {
 		return game.score + bonus()
 	}
 	return game.score
+}
+
+func firstFrameNotFinished(game *game) bool {
+	return len(game.rolls) == 1
 }
 
 func currentFrameIsASpare(game *game) bool {
