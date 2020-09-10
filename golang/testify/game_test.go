@@ -66,6 +66,16 @@ func TestGame_Spare(t *testing.T) {
 	assert.Equal(t, (6 + 4 + 1), game.Score())
 }
 
+func TestGame_WeCanOnlySumUpScoreForClosedFrames(t *testing.T) {
+	game := &game{}
+
+	game.Roll(3)
+	game.Roll(3)
+
+	game.Roll(3)
+	assert.Equal(t, 6, game.Score())
+}
+
 func TestGame_SpareInProgressDoesNotHaveAScoreYet(t *testing.T) {
 	game := &game{}
 
