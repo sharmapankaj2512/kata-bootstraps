@@ -5,29 +5,30 @@ type game struct {
 	strike bool
 }
 
-func (g *game) Roll(amount int) {
-	if amount > 10 || amount < 0 {
+func (game *game) Roll(fallenPins int) {
+
+	if fallenPins > 10 || fallenPins < 0 {
 		return
 	}
 
-	if amount == 10 {
-		g.strike = true
+	if fallenPins == 10 {
+		game.strike = true
 		return
 	}
 
-	if g.strike {
-		amount *= 2
-		g.strike = false
+	if game.strike {
+		fallenPins *= 2
+		game.strike = false
 	}
 
-	g.score += amount
+	game.score += fallenPins
 }
 
-func (g *game) Score() int {
-	if frameBeforeWasASpare(g) {
-		return g.score + bonus()
+func (game *game) Score() int {
+	if frameBeforeWasASpare(game) {
+		return game.score + bonus()
 	}
-	return g.score
+	return game.score
 }
 
 func bonus() int {
