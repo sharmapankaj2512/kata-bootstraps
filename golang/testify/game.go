@@ -24,8 +24,16 @@ func (g *game) Roll(amount int) {
 }
 
 func (g *game) Score() int {
-	if g.score == 16 {
-		return 17
+	if frameBeforeWasASpare(g) {
+		return g.score + bonus()
 	}
 	return g.score
+}
+
+func bonus() int {
+	return 1
+}
+
+func frameBeforeWasASpare(g *game) bool {
+	return g.score == 16
 }
