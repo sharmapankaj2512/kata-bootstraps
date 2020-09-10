@@ -66,6 +66,15 @@ func TestGame_Spare(t *testing.T) {
 	assert.Equal(t, (6 + 4 + 1), game.Score())
 }
 
+func TestGame_SpareInProgressDoesNotHaveAScoreYet(t *testing.T) {
+	game := &game{}
+
+	game.Roll(6)
+	game.Roll(4)
+
+	assert.Equal(t, 0, game.Score())
+}
+
 func TestGame_SpareWithNextFrame(t *testing.T) {
 	game := &game{}
 
