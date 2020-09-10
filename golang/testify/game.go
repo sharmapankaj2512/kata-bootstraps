@@ -1,9 +1,8 @@
 package kata
 
 type game struct {
-	score  int
-	strike bool
-	rolls  []int
+	score int
+	rolls []int
 }
 
 func (game *game) Roll(fallenPins int) {
