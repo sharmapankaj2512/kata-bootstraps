@@ -16,7 +16,7 @@ func TestGame_FirstRound(t *testing.T) {
 	game := &game{}
 
 	game.Roll(5)
-	assert.Equal(t, 5, game.Score())
+	assert.Equal(t, 0, game.Score())
 }
 
 func TestGame_SumScores(t *testing.T) {

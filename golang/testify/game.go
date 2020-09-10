@@ -13,11 +13,6 @@ func (game *game) Roll(fallenPins int) {
 		return
 	}
 
-	if fallenPins == 10 {
-		game.strike = true
-		return
-	}
-
 	if game.strike {
 		fallenPins *= 2
 		game.strike = false
@@ -27,6 +22,10 @@ func (game *game) Roll(fallenPins int) {
 }
 
 func (game *game) Score() int {
+	if len(game.rolls) == 1 {
+		return 0
+	}
+
 	if thereWasOnlyOneFrame(game) && currentFrameIsASpare(game) {
 		return 0
 	}
