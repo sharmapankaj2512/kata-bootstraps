@@ -7,7 +7,19 @@ type game struct {
 
 func (game *game) Roll(fallenPins int) {
 	game.rolls = append(game.rolls, fallenPins)
-	game.score += fallenPins
+	if len(game.frames) == 0 {
+		game.frames = append(game.frames, frame{score: fallenPins})
+	} else {
+		f := game.frames[len(game.frames)-1]
+		if f.isClosed {
+			game.frames = append(game.frames, frame{score: fallenPins})
+
+		} else {
+			f.score += fallenPins
+			f.isClosed = true
+		}
+	}
+
 }
 
 func (game *game) Score() int {
@@ -23,11 +35,7 @@ func (game *game) Score() int {
 		return sumOfClosedFrames(game) + bonus()
 	}
 
-	if game.score == 6 {
-		return sumOfClosedFrames(game)
-	}
-
-	return game.score
+	return sumOfClosedFrames(game)
 }
 
 func sumOfClosedFrames(game *game) int {
@@ -58,7 +66,7 @@ func bonus() int {
 }
 
 func frameBeforeWasASpare(g *game) bool {
-	if len(g.rolls) >= 2 && g.score == 16 {
+	if len(g.rolls) >= 2 {
 		return g.rolls[0]+g.rolls[1] == 10
 	}
 	return false
