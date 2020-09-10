@@ -13,11 +13,6 @@ func (game *game) Roll(fallenPins int) {
 		return
 	}
 
-	if game.strike {
-		fallenPins *= 2
-		game.strike = false
-	}
-
 	game.score += fallenPins
 }
 
