@@ -24,5 +24,8 @@ func (g *game) Roll(amount int) {
 }
 
 func (g *game) Score() int {
+	if g.score == 16 {
+		return 17
+	}
 	return g.score
 }

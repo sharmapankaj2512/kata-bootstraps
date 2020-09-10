@@ -62,7 +62,7 @@ func TestGame_Spare(t *testing.T) {
 	game.Roll(6)
 	game.Roll(4)
 	game.Roll(1)
-	assert.Equal(t, (6+4+1), game.Score())
+	assert.Equal(t, (6 + 4 + 1), game.Score())
 }
 
 func TestGame_SpareWithNextFrame(t *testing.T) {
@@ -70,6 +70,7 @@ func TestGame_SpareWithNextFrame(t *testing.T) {
 
 	game.Roll(6)
 	game.Roll(4)
+
 	game.Roll(1)
 	game.Roll(5)
 	assert.Equal(t, (6+4+1)+(1+5), game.Score())
