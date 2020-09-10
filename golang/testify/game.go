@@ -7,7 +7,6 @@ type game struct {
 
 func (game *game) Roll(fallenPins int) {
 	game.rolls = append(game.rolls, fallenPins)
-
 	game.score += fallenPins
 }
 
@@ -20,8 +19,12 @@ func (game *game) Score() int {
 		return 0
 	}
 	if frameBeforeWasASpare(game) {
-		return game.score + bonus()
+		return scoreWithoutBonus(game) + bonus()
 	}
+	return game.score
+}
+
+func scoreWithoutBonus(game *game) int {
 	return game.score
 }
 
