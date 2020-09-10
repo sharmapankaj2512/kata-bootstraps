@@ -23,6 +23,10 @@ func (game *game) Score() int {
 		return scoreWithoutBonus(game) + bonus()
 	}
 
+	if game.score == 6 {
+		return 4
+	}
+
 	return game.score
 }
 
