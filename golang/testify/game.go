@@ -38,5 +38,8 @@ func bonus() int {
 }
 
 func frameBeforeWasASpare(g *game) bool {
-	return g.score == 16
+	if len(g.rolls) >= 2 && g.score == 16 {
+		return g.rolls[0]+g.rolls[1] == 10
+	}
+	return false
 }

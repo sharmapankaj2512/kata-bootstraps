@@ -61,6 +61,7 @@ func TestGame_Spare(t *testing.T) {
 
 	game.Roll(6)
 	game.Roll(4)
+
 	game.Roll(1)
 	assert.Equal(t, (6 + 4 + 1), game.Score())
 }
