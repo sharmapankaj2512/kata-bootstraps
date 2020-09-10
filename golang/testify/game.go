@@ -8,10 +8,6 @@ type game struct {
 func (game *game) Roll(fallenPins int) {
 	game.rolls = append(game.rolls, fallenPins)
 
-	if fallenPins > 10 || fallenPins < 0 {
-		return
-	}
-
 	game.score += fallenPins
 }
 
