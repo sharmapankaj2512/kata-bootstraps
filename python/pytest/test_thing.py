@@ -1,11 +1,7 @@
-from thing import Thing
+from life import Life
+import unittest
 
-
-def test_correct_greeting():
-    thing = Thing("Bob")
-    assert "Hello Bob!" == thing.return_hello_name()
-
-
-def test_fail():
-    thing = Thing("Albert")
-    assert "Wrong!" == thing.return_hello_name()
+class TestLife(unittest.TestCase):
+    def test_life_exists(self):
+        life = Life(3)
+        self.assertEqual(3, life.grid_width)
