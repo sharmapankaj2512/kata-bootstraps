@@ -10,19 +10,19 @@ import (
 var _ = assert.Equal
 var _ = require.Equal
 
-func TestBirth(t *testing.T) {
+func TestDeath(t *testing.T) {
 	g := new(game)
 
 	g.field = [][]byte{
-		[]byte{ 0, 0, 1 },
-		[]byte{ 0, 0, 1 },
-		[]byte{ 0, 0, 1 },
+		[]byte{ 0, 0, 0 },
+		[]byte{ 0, 1, 0 },
+		[]byte{ 0, 0, 0 },
 	}
 
 	expect := [][]byte{
-		[]byte{ 0, 0, 1 },
-		[]byte{ 0, 1, 1 },
-		[]byte{ 0, 0, 1 },
+		[]byte{ 0, 0, 0 },
+		[]byte{ 0, 0, 0 },
+		[]byte{ 0, 0, 0 },
 	}
 	g.iterate()
 	assert.Equal(t, expect, g.field)
