@@ -5,12 +5,17 @@ import (
 	"testing"
 )
 
-func TestFailing(t *testing.T) {
-	assert.Equal(t, 42, doSomething("a"), "I'm failing you can start with me...")
-}
+func TestSimle(t *testing.T) {
+	g := new(game)
 
-func TestSomething(t *testing.T) {
-	assert.Equal(t, 42, doSomething("b"), "Answer to the Ultimate Question of Life, the Universe, and Everything")
+	//if g == nil {
+	//	t.Fatal("g not allocated")
+	//}
+
+	g = nil
+
+	assert.NotNil(t, g)
+
 }
 
 func TestGen(t *testing.T) {
