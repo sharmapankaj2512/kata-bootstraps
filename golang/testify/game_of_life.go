@@ -1,6 +1,11 @@
 package kata
 
-type game struct{}
-
-func main() {
+type game struct{
+	iterations int
 }
+
+func (g *game) iterate() {
+	g.iterations++
+}
+
+

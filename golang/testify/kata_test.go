@@ -1,21 +1,32 @@
 package kata
 
 import (
-	"github.com/stretchr/testify/assert"
 	"testing"
+
+	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 )
+
+var _ = assert.Equal
+var _ = require.Equal
 
 func TestSimle(t *testing.T) {
 	g := new(game)
 
-	//if g == nil {
-	//	t.Fatal("g not allocated")
-	//}
+	start := [][]byte{
+		[]byte{ 0, 0, 1 },
+		[]byte{ 0, 0, 1 },
+		[]byte{ 0, 0, 1 },
+	}
 
-	g = nil
+	expect := [][]byte{
+		[]byte{ 0, 0, 1 },
+		[]byte{ 0, 1, 1 },
+		[]byte{ 0, 0, 1 },
+	}
+	require.NotNil(t, g)
 
-	assert.NotNil(t, g)
-
+	g.iterate()
 }
 
 func TestGen(t *testing.T) {
@@ -38,6 +49,7 @@ func TestGen(t *testing.T) {
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
 			if got := doSomething(tt.input); got != tt.expected {
+
 				t.Errorf("doSomething() = %v, but expected %v", got, tt.expected)
 			}
 		})
