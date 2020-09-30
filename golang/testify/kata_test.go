@@ -10,10 +10,10 @@ import (
 var _ = assert.Equal
 var _ = require.Equal
 
-func TestSimle(t *testing.T) {
+func TestBirth(t *testing.T) {
 	g := new(game)
 
-	start := [][]byte{
+	g.field = [][]byte{
 		[]byte{ 0, 0, 1 },
 		[]byte{ 0, 0, 1 },
 		[]byte{ 0, 0, 1 },
@@ -24,9 +24,8 @@ func TestSimle(t *testing.T) {
 		[]byte{ 0, 1, 1 },
 		[]byte{ 0, 0, 1 },
 	}
-	require.NotNil(t, g)
-
 	g.iterate()
+	assert.Equal(t, expect, g.field)
 }
 
 func TestGen(t *testing.T) {
