@@ -15,3 +15,7 @@ class TestLife(unittest.TestCase):
     def test_a_grid_with_one_live_cell(self):
         life = Life(3)
         self.assertEqual(1, life.num_alive)
+
+    def test_a_grid_with_two_live_cell(self):
+        life = Life(3)
+        self.assertEqual(2, life.num_alive)
