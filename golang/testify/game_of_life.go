@@ -26,7 +26,6 @@ func (g *game) iterate() {
 			cells += g.get(i+0, j-1)
 			cells += g.get(i+1, j-1)
 			cells += g.get(i-1, j-0)
-			cells += g.get(i+0, j-0)
 			cells += g.get(i+1, j-0)
 			cells += g.get(i-1, j+1)
 			cells += g.get(i+0, j+1)
