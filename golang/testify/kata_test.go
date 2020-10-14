@@ -13,28 +13,28 @@ func TestPassingRomanNumberalDecode(t *testing.T) {
 		expected int
 	}{
 		// single character roman numerals
-		{ "I", 1 },
-		{ "V", 5 },
-		{ "X", 10 },
-		{ "L", 50 },
-		{ "C", 100 },
-		{ "D", 500 },
-		{ "M", 1000 },
+		{"I", 1},
+		{"V", 5},
+		{"X", 10},
+		{"L", 50},
+		{"C", 100},
+		{"D", 500},
+		{"M", 1000},
 		// additive roman numerals
-		{ "II", 2 },
-		{ "XX", 20 },
-		{ "MDCLXVI", 1666 }, // full additive roman numeral
-		{ "MMMCCCXXXIII", 3333 }, // “pathological” additive roman numeral
+		{"II", 2},
+		{"XX", 20},
+		{"MDCLXVI", 1666},      // full additive roman numeral
+		{"MMMCCCXXXIII", 3333}, // “pathological” additive roman numeral
 		// subtractive roman numerals (base cases)
-		{ "IV", 4 },
-		{ "IX", 9 },
-		{ "XL", 40 },
-		{ "XC", 90 },
-		{ "CD", 400 },
-		{ "CM", 900 },
-		{ "MMCDLXVII", 2467 },
+		{"IV", 4},
+		{"IX", 9},
+		{"XL", 40},
+		{"XC", 90},
+		{"CD", 400},
+		{"CM", 900},
+		{"MMCDLXVII", 2467},
 		// pathological cases
-		{ "MMMCMXCIX", 3999 },
+		{"MMMCMXCIX", 3999},
 	}
 	for _, tt := range tests {
 		t.Run(fmt.Sprintf("%q is %d", tt.input, tt.expected), func(t *testing.T) {
@@ -47,9 +47,11 @@ func TestPassingRomanNumberalDecode(t *testing.T) {
 
 func TestFailingRomanNumberalDecode(t *testing.T) {
 	inputs := []string{
+		// bad ordering
 		"IM",
 		"VL",
 		"MMMCDVLXII",
+		// too many chars
 		"IIII",
 		"VV",
 		"XXXX",
