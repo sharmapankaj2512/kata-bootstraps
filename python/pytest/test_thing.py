@@ -10,13 +10,19 @@ def test_correct_input_single_digits():
 
     thing = Thing("X")
     assert thing.to_arabic() == 10
-    #
-    # thing = Thing("L")
-    # assert thing.to_arabic() == 50
-    #
-    # thing = Thing("C")
-    # assert thing.to_arabic() == 100
-    #
-    # thing = Thing("M")
-    # assert thing.to_arabic() == 1000
+    
+    thing = Thing("L")
+    assert thing.to_arabic() == 50
+    
+    thing = Thing("C")
+    assert thing.to_arabic() == 100
+    
+    thing = Thing("M")
+    assert thing.to_arabic() == 1000
 
+def test_adding_up_digits():
+  thing = Thing("II")
+  assert thing.to_arabic() == 2
+
+  thing = Thing("VI")
+  assert thing.to_arabic() == 6
