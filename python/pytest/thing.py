@@ -1,7 +1,7 @@
 class Thing:
 
-    def __init__(self, name):
-        self.name = name
+    def __init__(self, roman):
+        self.roman = roman
 
-    def return_hello_name(self):
-        return "Hello " + self.name + "!"
+    def to_arabic(self):
+        return 1
