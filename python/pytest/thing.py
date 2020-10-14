@@ -4,4 +4,7 @@ class Thing:
         self.roman = roman
 
     def to_arabic(self):
+        if self.roman == "V":
+            return 5
+
         return 1
