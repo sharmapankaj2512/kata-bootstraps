@@ -8,8 +8,8 @@ def test_correct_input_single_digits():
     thing = Thing("V")
     assert thing.to_arabic() == 5
 
-    # thing = Thing("X")
-    # assert thing.to_arabic() == 10
+    thing = Thing("X")
+    assert thing.to_arabic() == 10
     #
     # thing = Thing("L")
     # assert thing.to_arabic() == 50
