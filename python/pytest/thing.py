@@ -12,8 +12,8 @@ class Thing:
         self.roman = roman
 
     def to_arabic(self):
-        if self.roman == "II":
-            return 2
-        if self.roman == "VI":
-            return 6
-        return self.MAPPING.get(self.roman)
+        result = 0
+        for entry in self.roman:
+            n = self.MAPPING.get(entry)
+            result += n
+        return result
