@@ -50,6 +50,13 @@ func TestFailingRomanNumberalDecode(t *testing.T) {
 		"IM",
 		"VL",
 		"MMMCDVLXII",
+		"IIII",
+		"VV",
+		"XXXX",
+		"LL",
+		"CCCC",
+		"DD",
+		"MMMM",
 	}
 
 	for _, input := range inputs {
