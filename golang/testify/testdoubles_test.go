@@ -47,7 +47,7 @@ func (m *MyStub) DoSomething(number int) (bool, error) {
 	return true, nil
 }
 func TestMyStubIsReturningTrue(t *testing.T) {
-	result, err := UnderTest(new(MyStub), 42)
+	result, err := UnderTest(new(MyStub), 41)
 	assert.True(t, result)
 	assert.Nil(t, err)
 }
