@@ -2,22 +2,25 @@
 // helloAlexa, on Monday returns good morning, have a great start to the week
 // helloAlexa, on Friday returns good morning, hope you have great plan for the weekend
 
-function helloAlexa(output) {
+function helloAlexa(output, day) {
   output.say("Good Morning");
-  output.say("have a great start to the week");
+  if (day == "Mon")  output.say("have a great start to the week");
+
 }
 
 describe("Alexa", () => {
   it("says good morning", () => {
 
     const output = { say:  jest.fn() };
-    helloAlexa(output);
+    helloAlexa(output, "Sun");
     expect(output.say).toHaveBeenLastCalledWith("Good Morning");
   });
 
   it("on monday it says good morning, have a great start to the week", () => { 
     const output = { say:  jest.fn() };
-    helloAlexa(output);
+    const day = { say:  jest.fn() };
+
+    helloAlexa(output, "Mon");
     expect(output.say).toBeCalledWith("Good Morning");
     expect(output.say).toBeCalledWith("have a great start to the week");
   });
