@@ -4,6 +4,7 @@
 
 function helloAlexa(output) {
   output.say("Good Morning");
+  output.say("have a great start to the week");
 }
 
 describe("Alexa", () => {
@@ -13,6 +14,12 @@ describe("Alexa", () => {
     helloAlexa(output);
     //expect(output.say).toBeCalled();
     expect(output.say).toBeCalledWith("Good Morning");
+  });
 
+  it("on monday it says good morning, have a great start to the week", () => { 
+    const output = { say:  jest.fn() };
+    helloAlexa(output);
+    expect(output.say).toBeCalledWith("Good Morning");
+    expect(output.say).toBeCalledWith("have a great start to the week");
   });
 });
