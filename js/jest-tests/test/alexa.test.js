@@ -3,11 +3,16 @@
 // helloAlexa, on Friday returns good morning, hope you have great plan for the weekend
 
 function helloAlexa(output) {
-  output.say("Good morning");
+  output.say("Good Morning");
 }
 
 describe("Alexa", () => {
   it("says good morning", () => {
-    helloAlexa({ say: (text) => console.log(text) });
+
+    const output = { say:  jest.fn() };
+    helloAlexa(output);
+    //expect(output.say).toBeCalled();
+    expect(output.say).toBeCalledWith("Good Morning");
+
   });
 });
