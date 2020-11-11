@@ -4,6 +4,8 @@
 
 describe("Alexa", () => {
   it("says good morning", () => {
-    helloAlexa()
+    
+    helloAlexa(output)
+    expect(output).toHaveBeenCalledWith("");
   })
 })
