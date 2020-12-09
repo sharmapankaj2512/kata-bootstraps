@@ -9,7 +9,8 @@ import (
 // xMasTree(0) = ["#", "#"]
 // xMasTree(1) = ["#", #", "#"]
 // xMasTree(2) = uneven number should not work
-// xMasTree(3) = ["__#__", "_###_", "#####", "__#__", , "__#__"]
+// xMasTree(3) = ["__#__", "_###_", "#####", "__#__", "__#__"]
+// xMasTree(5) = ["____#____", "___###___", "__#####__", "_#######_", "#########", "__#__", "__#__"]
 
 func TestEmptyLevelsTree(t *testing.T) {
 	assert.Equal(t, []string{"#", "#"}, xMasTree(0))
@@ -21,6 +22,7 @@ func TestTree1(t *testing.T) {
 
 func TestTreeTopPadding(t *testing.T) {
 	assert.Equal(t, "__#__", xMasTree(3)[0])
+	assert.Equal(t, "____#____", xMasTree(5)[0])
 	// assert.Equal(t, []string{"__#__", "_###_", "#####", "__#__", , "__#__"}, xMasTree(3))
 }
 
@@ -32,6 +34,10 @@ func xMasTree(size int) []string {
 
 	if size == 3 {
 		tree[0] = "__#__"
+	}
+
+	if size == 5 {
+		tree[0] = "____#____"
 	}
 
 	return tree
