@@ -12,7 +12,8 @@ import (
 // xMasTree(3) = ["_#_", "###", "_#_", "_#_"]
 
 func TestEmptyLevelsTree(t *testing.T) {
-	assert.Equal(t, string{"#", "#"}, xMasTree(0))
+	expected := [2]string{"#", "#"}
+	assert.Equal(t, expected, xMasTree(0))
 }
 
 
@@ -42,9 +43,6 @@ func TestEmptyLevelsTree(t *testing.T) {
 //	}
 //}
 
-func doSomething(input string) interface{} {
-	if input == "b" {
-		return 42
-	}
-	return 0
+func xMasTree(size int) []string {
+	return []string{"#", "#"}
 }
