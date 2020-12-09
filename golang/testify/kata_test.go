@@ -33,7 +33,7 @@ func xMasTree(size int) []string {
 	}
 
 	if size == 3 {
-		tree[0] = "__#__"
+		tree[0] = sidePadding(3) + tree[0] + sidePadding(3)
 	}
 
 	if size == 5 {
@@ -41,6 +41,11 @@ func xMasTree(size int) []string {
 	}
 
 	return tree
+}
+
+func sidePadding(i int) string {
+	//i-1
+	return "__"
 }
 
 //func TestGen(t *testing.T) {
