@@ -12,10 +12,12 @@ import (
 // xMasTree(3) = ["_#_", "###", "_#_", "_#_"]
 
 func TestEmptyLevelsTree(t *testing.T) {
-	expected := [2]string{"#", "#"}
-	assert.Equal(t, expected, xMasTree(0))
+	assert.Equal(t, []string{"#", "#"}, xMasTree(0))
 }
 
+func TestTree1(t *testing.T) {
+	assert.Equal(t, []string{"#", "#", "#"}, xMasTree(1))
+}
 
 //func TestGen(t *testing.T) {
 //	tests := []struct {
@@ -44,5 +46,9 @@ func TestEmptyLevelsTree(t *testing.T) {
 //}
 
 func xMasTree(size int) []string {
-	return []string{"#", "#"}
+	tree := []string{"#", "#"}
+	if size == 1 {
+		return append(tree, "#")
+	}
+	return tree
 }
