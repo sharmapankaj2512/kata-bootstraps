@@ -5,6 +5,12 @@ import (
 	"testing"
 )
 
+// xMasTree(-1) = ?
+// xMasTree(0) = ["#", "#"]
+// xMasTree(1) = ["#", #", "#"]
+// xMasTree(2) = uneven number should not work
+// xMasTree(3) = ["_#_", "###", "_#_", "_#_"]
+
 func TestFailing(t *testing.T) {
 	assert.Equal(t, 42, doSomething("a"), "I'm failing you can start with me...")
 }
