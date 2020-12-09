@@ -9,7 +9,7 @@ import (
 // xMasTree(0) = ["#", "#"]
 // xMasTree(1) = ["#", #", "#"]
 // xMasTree(2) = uneven number should not work
-// xMasTree(3) = ["_#_", "###", "_#_", "_#_"]
+// xMasTree(3) = ["__#__", "_###_", "#####", "__#__", , "__#__"]
 
 func TestEmptyLevelsTree(t *testing.T) {
 	assert.Equal(t, []string{"#", "#"}, xMasTree(0))
@@ -17,6 +17,11 @@ func TestEmptyLevelsTree(t *testing.T) {
 
 func TestTree1(t *testing.T) {
 	assert.Equal(t, []string{"#", "#", "#"}, xMasTree(1))
+}
+
+func TestTree3(t *testing.T) {
+	assert.Equal(t, "###", xMasTree(3)[1])
+	// assert.Equal(t, []string{"__#__", "_###_", "#####", "__#__", , "__#__"}, xMasTree(3))
 }
 
 //func TestGen(t *testing.T) {
