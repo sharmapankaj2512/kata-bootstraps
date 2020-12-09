@@ -23,6 +23,7 @@ func TestTree1(t *testing.T) {
 func TestTreeTopPadding(t *testing.T) {
 	assert.Equal(t, "__#__", xMasTree(3)[0])
 	assert.Equal(t, "____#____", xMasTree(5)[0])
+	assert.Equal(t, "______#______", xMasTree(7)[0])
 	// assert.Equal(t, []string{"__#__", "_###_", "#####", "__#__", , "__#__"}, xMasTree(3))
 }
 
@@ -32,20 +33,17 @@ func xMasTree(size int) []string {
 		return append(tree, "#")
 	}
 
-	if size == 3 {
-		tree[0] = sidePadding(3) + tree[0] + sidePadding(3)
-	}
-
-	if size == 5 {
-		tree[0] = "____#____"
-	}
+	tree[0] = sidePadding(size) + tree[0] + sidePadding(size)
 
 	return tree
 }
 
-func sidePadding(i int) string {
-	//i-1
-	return "__"
+func sidePadding(size int) string {
+	padding := ""
+	for i := 0; i < size - 1; i++ {
+		padding += "_"
+	}
+	return padding
 }
 
 //func TestGen(t *testing.T) {
