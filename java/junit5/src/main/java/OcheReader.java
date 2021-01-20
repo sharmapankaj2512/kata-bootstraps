@@ -1,9 +1,11 @@
 public class OcheReader {
+    String input;
     public OcheReader(String echo) {
-
+      input = echo;
     }
 
     public String getResponse() {
-        return "ohce";
+        StringBuilder sb = new StringBuilder(input);
+        return sb.reverse().toString();
     }
 }

@@ -16,12 +16,15 @@ public class ThingTest {
 
 
     @Test
-    void should_greet_with_name() {
+    void itOutputsInputInReverse() {
 
-
-        final OcheReader oche = new OcheReader("echo");
+        OcheReader oche = new OcheReader("echo");
 
         assertEquals("ohce",
+                oche.getResponse());
+
+        oche = new OcheReader("tom");
+        assertEquals("mot",
                 oche.getResponse());
     }
 
