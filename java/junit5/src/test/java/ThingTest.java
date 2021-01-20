@@ -17,7 +17,7 @@ public class ThingTest {
 
     @Test
     void itOutputsInputInReverse() {
-
+        Mockito.
         OcheReader oche = new OcheReader("echo");
 
         assertEquals("ohce",
