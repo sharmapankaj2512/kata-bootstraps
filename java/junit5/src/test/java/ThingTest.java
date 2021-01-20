@@ -37,6 +37,14 @@ public class ThingTest {
     }
 
     @Test
+    void itGreetsWithYourName() {
+        final PrintStream mock = mock(PrintStream.class);
+
+        oche = new OcheReader("Tom", mock);
+        verify(mock).println("¡Buenas noches Tom");
+    }
+
+    @Test
     void it_should_not_fail() {
         assertTrue(true);
     }
