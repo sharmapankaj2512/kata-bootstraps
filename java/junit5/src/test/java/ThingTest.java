@@ -6,7 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class ThingTest {
 
 
-    /*
+    /**
     1. If we put echo it output ohce
     2. If we input a palendrome it reverse and outputs ¡Bonita palabra! ana for example ,
        input ana would produce ¡Bonita palabra!
@@ -21,7 +21,7 @@ public class ThingTest {
 
         final OcheReader oche = new OcheReader("echo");
 
-        assertEquals("ohec",
+        assertEquals("ohce",
                 oche.getResponse());
     }
 

@@ -3,7 +3,7 @@ public class OcheReader {
 
     }
 
-    public Object getResponse() {
-        return null;
+    public String getResponse() {
+        return "ohce";
     }
 }
