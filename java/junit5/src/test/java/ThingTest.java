@@ -1,15 +1,10 @@
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ThingTest {
 
-    @Test
-    void fail() {
-        Thing thing = new Thing();
-        String value = thing.callForAction();
-        assertEquals("Food", value);
-    }
 
     /*
     1. If we put echo it output ohce
@@ -21,8 +16,13 @@ public class ThingTest {
 
 
     @Test
-    void should_greet_with_name(){
+    void should_greet_with_name() {
 
+
+        final OcheReader oche = new OcheReader("echo");
+
+        assertEquals("ohec",
+                oche.getResponse());
     }
 
     @Test
