@@ -8,8 +8,8 @@ import (
 /*
 	ohce is a console application that echoes the reverse of what you input through the console.
 
-    - [ ] "hello" -> "olleh"
-    - [ ] "ohce" -> "echo"
+    - [x] "hello" -> "olleh"
+    - [x] "ohce" -> "echo"
 
 	Even though it seems a silly application, ohce knows a thing or two.
 		When you start oche, it greets you differently depending on the current time, but only in Spanish:
@@ -22,10 +22,21 @@ import (
     ohce knows when to stop, you just have to write Stop! and it'll answer Adios < your name > and end.
  */
 
-func Reverse ()
+func Reverse(input string) string {
+	var r = []rune(input)
+	length := len(r)
+	for i := 0; i < len(r) / 2; i++ {
+		r[i], r[length-i-1] = r[length-i-1], r[i]
+	}
+	return string(r)
+}
 
-func TestPolindrom(t *testing.T) {
-	assert.Equal(t, "olleh", "hello")
+func TestHello(t *testing.T) {
+	assert.Equal(t, "olleh", Reverse("hello"))
+}
+
+func TestEcho(t *testing.T) {
+	assert.Equal(t, "ohce", Reverse("echo"))
 }
 
 func TestSomething(t *testing.T) {
