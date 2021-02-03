@@ -1,10 +1,15 @@
 package kata
 
 import (
+	"bufio"
+	"bytes"
 	"fmt"
-	"github.com/stretchr/testify/assert"
+	"io"
+	"strings"
 	"testing"
 	"time"
+
+	"github.com/stretchr/testify/assert"
 )
 
 /*
@@ -25,6 +30,9 @@ import (
 		- [ ] Greet("Daniel", 12) ->   ¡Buenas tardes Daniel!
 		- [ ] Greet("Daniel", 19) ->   ¡Buenas tardes Daniel!
 	When you introduce a palindrome, ohce likes it and after reverse-echoing it, it adds ¡Bonita palabra!
+
+	[x] NewProgam with name "name" and time of 1AM, greet() -> ¡Buenos noches name!
+	[ ] NewProgam with name "name" and time of 1AM, stop() -> ¡Adios name!
 
     ohce knows when to stop, you just have to write Stop! and it'll answer Adios < your name > and end.
  */
@@ -65,11 +73,6 @@ func Greet(name string, hour int) string {
 	return fmt.Sprintf("¡Buenas noches %s!", name)
 }
 
-type Program struct{
-	Name string
-	clock Clock
-}
-
 type Clock interface {
 	now() time.Time
 }
@@ -82,12 +85,29 @@ func (RealClock) now() time.Time {
 
 type stubClock time.Time
 
-func (t stubClock) t() time.Time {
+func (t stubClock) now() time.Time {
 	return time.Time(t)
+}
+
+type Program struct{
+	Name string
+	clock Clock
 }
 
 func (p *Program) greet() string {
 	return Greet(p.Name, p.clock.now().Hour())
+}
+
+func (p *Program) depart() string {
+	return fmt.Sprintf("¡Adios %s!", p.Name)
+}
+
+func (p *Program) Ohce(line string, w io.Writer) {
+	rev := Reverse(line)
+	fmt.Fprintln(w, rev)
+	if rev == line {
+		fmt.Println("bar")
+	}
 }
 
 func NewProgram(name string) *Program {
@@ -97,12 +117,64 @@ func NewProgram(name string) *Program {
 	}
 }
 
+const (
+	nochesHour = 1
+	diasHour = 11
+	tardesHour = 17
+)
+
 func TestNewProgram(t *testing.T) {
 	prog := NewProgram("name")
+	prog.clock = stubClock(time.Date(2021, 02, 03, nochesHour, 0, 0, 0, time.Local))
 
-	assert.Equal(t, "¡Buenas noches name!", prog.greet())
-	
+	assert.Equal(t, prog.greet(), "¡Buenas noches name!")
 }
+
+func ohce(w io.Writer, prog *Program, r io.Reader) {
+	fmt.Fprintln(w, prog.greet())
+
+	scanner := bufio.NewScanner(r)
+	scanner.Split(bufio.ScanLines)
+
+	for scanner.Scan() {
+		line := scanner.Text()
+
+		if line == "Stop!" {
+			break
+		}
+
+		prog.Ohce(line, w)
+	}
+
+	if err := scanner.Err(); err != nil {
+		panic(err)
+	}
+
+	fmt.Fprintln(w, prog.depart())
+}
+
+func TestOhce(t *testing.T) {
+ 	input := strings.NewReader(`hello
+echo
+stop
+Stop!
+`)
+	expected := []byte(`¡Buenos días Jorge!
+olleh
+ohce
+pots
+¡Adios Jorge!
+`)
+
+	prog := NewProgram("Jorge")
+	prog.clock = stubClock(time.Date(2021, 02, 03, diasHour, 0, 0, 0, time.Local))
+
+	output := new(bytes.Buffer)
+	ohce(output, prog, input)
+
+	assert.Equal(t, output.Bytes(), expected)
+}
+
 
 func TestSomething(t *testing.T) {
 	assert.Equal(t, 42, doSomething("b"), "Answer to the Ultimate Question of Life, the Universe, and Everything")
