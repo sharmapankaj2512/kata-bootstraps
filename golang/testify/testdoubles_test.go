@@ -75,7 +75,7 @@ func TestMockIsFailingWhenNotCalledWith42(t *testing.T) {
 	stub := new(MyTestDoubleObject)
 	stub.On("DoSomething", 42).Return(false, nil)
 
-	UnderTest(stub, 13)
+	UnderTest(stub, 42)
 
 	stub.AssertExpectations(t)
 }
