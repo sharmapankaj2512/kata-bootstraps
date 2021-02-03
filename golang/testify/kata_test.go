@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
+	"time"
 )
 
 /*
@@ -63,16 +64,29 @@ func Greet(name string, hour int) string {
 
 type Program struct{
 	Name string
+	clock Clock
+}
+
+type Clock interface {
+	now() time.Time
+}
+func (p *Program) greet() string {
+	return Greet(p.Name, p.clock.now().Hour())
 }
 
 func NewProgram(name string) *Program {
 	return &Program{
 		Name: name,
+		clock: nil,
 	}
 }
 
+
+
 func TestNewProgram(t *testing.T) {
-	_ = NewProgram("name")
+	prog := NewProgram("name")
+
+	assert.Equal(t, "¡Buenas noches name!", prog.greet())
 	
 }
 
