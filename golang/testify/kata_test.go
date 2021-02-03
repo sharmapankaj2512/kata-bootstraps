@@ -15,9 +15,11 @@ import (
 	Even though it seems a silly application, ohce knows a thing or two.
 		When you start oche, it greets you differently depending on the current time, but only in Spanish:
 		Between 20 and 6 hours, ohce will greet you saying: ¡Buenas noches < your name >!
-         - [ ] Greet("Paul") ->   ¡Buenas noches Paul!
+         - [ ] Greet("Paul", 20) ->   ¡Buenas noches Paul!
+		- [ ] Greet("Paul", 5) ->   ¡Buenas noches Paul!
 		Between 6 and 12 hours, ohce will greet you saying: ¡Buenos días < your name >!
-		- [ ] Greet("David") ->   ¡Buenos días David!
+		- [ ] Greet("David", 6) ->   ¡Buenos días David!
+		- [ ] Greet("David", 11) ->   ¡Buenos días David!
 		Between 12 and 20 hours, ohce will greet you saying: ¡Buenas tardes < your name >!
 		-
 	When you introduce a palindrome, ohce likes it and after reverse-echoing it, it adds ¡Bonita palabra!
@@ -42,15 +44,17 @@ func TestEcho(t *testing.T) {
 	assert.Equal(t, "ohce", Reverse("echo"))
 }
 func TestGreet(t *testing.T) {
-	assert.Equal(t, "¡Buenas noches Paul!", Greet("Paul"))
+	assert.Equal(t, "¡Buenas noches Paul!", Greet("Paul", 20))
+	assert.Equal(t, "¡Buenas noches Paul!", Greet("Paul", 5))
 }
 
 
 func TestGreet_6_12(t *testing.T) {
-	assert.Equal(t, "¡Buenos días David!", Greet("David"))
+	assert.Equal(t, "¡Buenos días David!", Greet("David", 6))
+	assert.Equal(t, "¡Buenos días David!", Greet("David", 11))
 }
 
-func Greet(name string) string {
+func Greet(name string, hour int) string {
 	return fmt.Sprintf("¡Buenas noches %s!", name)
 }
 
