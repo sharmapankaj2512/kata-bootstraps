@@ -1,6 +1,7 @@
 package kata
 
 import (
+	"fmt"
 	"github.com/stretchr/testify/assert"
 	"testing"
 )
@@ -14,9 +15,11 @@ import (
 	Even though it seems a silly application, ohce knows a thing or two.
 		When you start oche, it greets you differently depending on the current time, but only in Spanish:
 		Between 20 and 6 hours, ohce will greet you saying: ¡Buenas noches < your name >!
+         - [ ] Greet("Paul") ->   ¡Buenas noches Paul!
 		Between 6 and 12 hours, ohce will greet you saying: ¡Buenos días < your name >!
+		- [ ] Greet("David") ->   ¡Buenos días David!
 		Between 12 and 20 hours, ohce will greet you saying: ¡Buenas tardes < your name >!
-
+		-
 	When you introduce a palindrome, ohce likes it and after reverse-echoing it, it adds ¡Bonita palabra!
 
     ohce knows when to stop, you just have to write Stop! and it'll answer Adios < your name > and end.
@@ -37,6 +40,18 @@ func TestHello(t *testing.T) {
 
 func TestEcho(t *testing.T) {
 	assert.Equal(t, "ohce", Reverse("echo"))
+}
+func TestGreet(t *testing.T) {
+	assert.Equal(t, "¡Buenas noches Paul!", Greet("Paul"))
+}
+
+
+func TestGreet_6_12(t *testing.T) {
+	assert.Equal(t, "¡Buenos días David!", Greet("David"))
+}
+
+func Greet(name string) string {
+	return fmt.Sprintf("¡Buenas noches %s!", name)
 }
 
 func TestSomething(t *testing.T) {
