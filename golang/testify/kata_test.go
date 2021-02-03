@@ -59,6 +59,9 @@ func Greet(name string, hour int) string {
 	if 6 <= hour && hour < 12 {
 		return fmt.Sprintf("¡Buenos días %s!", name)
 	}
+	if 12 <= hour && hour < 20 {
+		return "foo"
+	}
 	return fmt.Sprintf("¡Buenas noches %s!", name)
 }
 
@@ -70,6 +73,19 @@ type Program struct{
 type Clock interface {
 	now() time.Time
 }
+
+type RealClock struct{}
+
+func (RealClock) now() time.Time {
+	return time.Now()
+}
+
+type stubClock time.Time
+
+func (t stubClock) t() time.Time {
+	return time.Time(t)
+}
+
 func (p *Program) greet() string {
 	return Greet(p.Name, p.clock.now().Hour())
 }
@@ -77,11 +93,9 @@ func (p *Program) greet() string {
 func NewProgram(name string) *Program {
 	return &Program{
 		Name: name,
-		clock: nil,
+		clock: RealClock{},
 	}
 }
-
-
 
 func TestNewProgram(t *testing.T) {
 	prog := NewProgram("name")
