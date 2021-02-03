@@ -21,8 +21,11 @@ import (
 
     ohce knows when to stop, you just have to write Stop! and it'll answer Adios < your name > and end.
  */
-func TestFailing(t *testing.T) {
-	assert.Equal(t, 42, doSomething("a"), "I'm failing you can start with me...")
+
+func Reverse ()
+
+func TestPolindrom(t *testing.T) {
+	assert.Equal(t, "olleh", "hello")
 }
 
 func TestSomething(t *testing.T) {
