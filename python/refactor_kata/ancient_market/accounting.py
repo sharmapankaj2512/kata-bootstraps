@@ -42,8 +42,18 @@ def compute_market_fee(deal_details):
 
     merchants_profit = abs(deal_details.dst.amount - fair_price)
 
-    merchant_fee_factor = 1.0
+    merchant_fee_factor = calculate_merchant_fee(deal_details)
 
+    print(merchant_fee_factor)
+
+    if merchant_fee_factor <= 0:
+        return 0
+
+    return merchants_profit * merchant_fee_factor
+
+
+def calculate_merchant_fee(deal_details):
+    merchant_fee_factor = 1.0
     if deal_details.merchant.did_he_burn_our_market_in_past and deal_details.merchant.did_his_goods_ever_kill_anyone:
         merchant_fee_factor = 0.25
     elif (
@@ -61,24 +71,14 @@ def compute_market_fee(deal_details):
             deal_details.merchant.did_his_goods_ever_kill_anyone
     ):
         merchant_fee_factor = 0.75
-
     if deal_details.merchant.did_he_offer_free_drinks_to_clerks:
         merchant_fee_factor -= 0.05
-
     if deal_details.merchant.did_he_trade_on_competittors_marketplace:
         merchant_fee_factor += 0.1
-
     if 0 < deal_details.merchant.scale_of_usual_bribe < 10:
         merchant_fee_factor -= 0.05 * deal_details.merchant.scale_of_usual_bribe
     else:
         raise Exception("Check your papers!!!")
-
     if deal_details.merchant.how_many_seasons_do_we_work_together > 0:
         merchant_fee_factor -= 0.01 * deal_details.merchant.how_many_seasons_do_we_work_together
-
-    print(merchant_fee_factor)
-
-    if merchant_fee_factor <= 0:
-        return 0
-
-    return merchants_profit * merchant_fee_factor
+    return merchant_fee_factor
