@@ -5,7 +5,8 @@ from fixtures import (
     GroatGrain_Tod_10, GroatGrain_100, Cypraea_10, Slave_1,
     evil_merchant, good_merchant, neutral_merchant
 )
-from ancient_market.accounting import compute_market_fee, TradeDetails
+from ancient_market.accounting import compute_market_fee
+from ancient_market.trade_details import TradeDetails
 
 
 def test_direct_trade_market_fee_evil_merchant():

@@ -1,5 +1,7 @@
-from ancient_market.accounting import compute_market_fee, Merchant, Goods, TradeDetails
-
+from ancient_market.accounting import compute_market_fee
+from ancient_market.merchant import Merchant
+from ancient_market.trade_details import TradeDetails
+from ancient_market.goods import Goods
 
 evil_merchant = Merchant(
     does_it_has_assasins=True,
