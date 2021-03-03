@@ -23,7 +23,7 @@ def compute_fair_price(src_amount, src_currency_name, src_currency_unit,
 
     return (
             src_amount *
-            [x for x in exchange_rates if x[0] == 'Groat_grain' and x[2] == dst_currency_name]
+            [x for x in exchange_rates if x[0] == src_currency_name and x[2] == dst_currency_name]
             [0][-1]
     )
 
