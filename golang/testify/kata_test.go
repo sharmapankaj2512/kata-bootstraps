@@ -29,7 +29,7 @@ func TestTrunkOnly(t *testing.T) {
 	assert.Equal(t, []string{"#", "#"}, tree)
 }
 
-func TestTree_1(t *testing.T) {
+func TestXmasTree_1(t *testing.T) {
 	assert.Equal(t, []string{"#", "#", "#"}, XMasTree(1))
 }
 
@@ -41,7 +41,7 @@ func TestXMasTree_2(t *testing.T) {
 		"_#_"}, XMasTree(2))
 }
 
-func TestTree_5(t *testing.T) {
+func TestXmasTree_5(t *testing.T) {
 	assert.Equal(t, []string{
 		"____#____",
 		"___###___",
@@ -51,7 +51,7 @@ func TestTree_5(t *testing.T) {
 		"____#____",
 		"____#____"}, XMasTree(5))
 }
-func TestTree_7(t *testing.T) {
+func TestXmasTree_7(t *testing.T) {
 	assert.Equal(t, []string{
 		"______#______",
 		"_____###_____",
@@ -64,7 +64,7 @@ func TestTree_7(t *testing.T) {
 		"______#______"}, XMasTree(7))
 }
 
-func TestTree_3(t *testing.T) {
+func TestXmasTree_3(t *testing.T) {
 	assert.Equal(t, []string{
 		"__#__",
 		"_###_",
