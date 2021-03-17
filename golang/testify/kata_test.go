@@ -33,7 +33,7 @@ func TestTree_1(t *testing.T) {
 	assert.Equal(t, []string{"#", "#", "#"}, XMasTree(1))
 }
 
-func TestTree_2(t *testing.T) {
+func TestXMasTree_2(t *testing.T) {
 	assert.Equal(t, []string{
 		"_#_",
 		"###",
@@ -73,23 +73,23 @@ func TestTree_3(t *testing.T) {
 		"__#__"}, XMasTree(3))
 }
 
-func TestTree_2_Top_Level(t *testing.T) {
+func TestXMasTree_2_Top_Level(t *testing.T) {
 	assert.Equal(t, "_#_", XMasTree(2)[0])
 }
-func TestTree_2_Trunk_Level(t *testing.T) {
+func TestXMasTree_2_Trunk_Level(t *testing.T) {
 	assert.Equal(t, "_#_", XMasTree(2)[2])
 	assert.Equal(t, "_#_", XMasTree(2)[3])
 }
 
-func TestTree_3_Top_Level(t *testing.T) {
+func TestXMasTree_3_TopLevel(t *testing.T) {
 	assert.Equal(t, "__#__", XMasTree(3)[0])
 }
 
-func TestTree_2_2nd_Level(t *testing.T) {
+func TestXMasTree_2_2nd_Level(t *testing.T) {
 	assert.Equal(t, "###", XMasTree(2)[1])
 }
 
-func TestTree_negative_height(t *testing.T) {
+func TestNegativeHeightsDontPanic(t *testing.T) {
 	assert.NotPanics(t, func() { XMasTree(-1) })
 	assert.NotPanics(t, func() { treeBody(-1) })
 	assert.NotPanics(t, func() { sidePadding(-1, -1) })
