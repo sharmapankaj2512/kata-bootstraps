@@ -111,7 +111,8 @@ func XMasTree(height int) []string {
 	var tree []string
 
 	for level := 0; level < height; level++ {
-		tree = append(tree, sidePadding(height, level)+treeBody(level)+sidePadding(height, level))
+		padding := sidePadding(height, level)
+		tree = append(tree, padding+treeBody(level)+padding)
 	}
 
 	return addTreeTrunk(tree, height)
