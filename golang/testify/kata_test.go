@@ -85,7 +85,8 @@ func TestTree_2_2nd_Level(t *testing.T) {
 	assert.Equal(t, "###", XMasTree(2)[1])
 }
 func XMasTree(height int) []string {
-	tree := []string{}
+	var tree []string
+
 	for level := 0; level < height; level++ {
 		tree = append(tree, sidePadding(height, level)+treeBody(level)+sidePadding(height, level))
 	}
