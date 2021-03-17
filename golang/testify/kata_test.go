@@ -2,6 +2,7 @@ package kata
 
 import (
 	"github.com/stretchr/testify/assert"
+	"strings"
 	"testing"
 )
 
@@ -93,10 +94,10 @@ func XMasTree(height int) []string {
 }
 
 func treeBody(level int) string {
-	tree := "#"
-	for i := 0; i < level; i++ {
-		tree += "##"
-	}
+	tree := strings.Repeat("#", 2*level+1)
+	//for i := 0; i < level; i++ {
+	//	tree += "##"
+	//}
 	return tree
 }
 
