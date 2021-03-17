@@ -1,7 +1,9 @@
 package kata
 
 import (
+	"errors"
 	"github.com/stretchr/testify/assert"
+	"github.com/stretchr/testify/require"
 	"strings"
 	"testing"
 )
@@ -22,7 +24,9 @@ import (
 //             __#__           1
 //             __#__           2 - Trunk/Stem of Tree
 func TestTrunkOnly(t *testing.T) {
-	assert.Equal(t, []string{"#", "#"}, XMasTree(0))
+	tree, err := XMasTree_(0)
+	require.NoError(t, err)
+	assert.Equal(t, []string{"#", "#"}, tree)
 }
 
 func TestTree_1(t *testing.T) {
@@ -89,6 +93,18 @@ func TestTree_negative_height(t *testing.T) {
 	assert.NotPanics(t, func() { XMasTree(-1) })
 	assert.NotPanics(t, func() { treeBody(-1) })
 	assert.NotPanics(t, func() { sidePadding(-1, -1) })
+}
+
+func TestError_Message(t *testing.T) {
+	_, err := XMasTree_(-1)
+	require.Error(t, err)
+}
+
+func XMasTree_(height int) ([]string, error) {
+	if height < 0 {
+		return nil, errors.New("negative height")
+	}
+	return XMasTree(height), nil
 }
 
 func XMasTree(height int) []string {
