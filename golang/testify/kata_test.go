@@ -98,9 +98,8 @@ func treeBody(level int) string {
 }
 
 func addTreeTrunk(tree []string, height int) []string {
-	tree = append(tree, sidePadding(height, 0)+"#"+sidePadding(height, 0))
-	tree = append(tree, sidePadding(height, 0)+"#"+sidePadding(height, 0))
-	return tree
+	trunk := sidePadding(height, 0) + "#" + sidePadding(height, 0)
+	return append(tree, trunk, trunk)
 }
 
 func sidePadding(height int, level int) string {
