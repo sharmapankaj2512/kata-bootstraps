@@ -104,9 +104,9 @@ func addTreeTrunk(tree []string, height int) []string {
 }
 
 func sidePadding(height int, level int) string {
-	padding := ""
-	for i := 0; i < height-level-1; i++ {
-		padding += "_"
+	count := height - level - 1
+	if count < 1 {
+		return ""
 	}
-	return padding
+	return strings.Repeat("_", count)
 }
