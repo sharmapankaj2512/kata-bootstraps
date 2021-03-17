@@ -84,6 +84,13 @@ func TestTree_3_Top_Level(t *testing.T) {
 func TestTree_2_2nd_Level(t *testing.T) {
 	assert.Equal(t, "###", XMasTree(2)[1])
 }
+
+func TestTree_negative_height(t *testing.T) {
+	assert.NotPanics(t, func() { XMasTree(-1) })
+	assert.NotPanics(t, func() { treeBody(-1) })
+	assert.NotPanics(t, func() { sidePadding(-1, -1) })
+}
+
 func XMasTree(height int) []string {
 	var tree []string
 
@@ -95,6 +102,9 @@ func XMasTree(height int) []string {
 }
 
 func treeBody(level int) string {
+	if level < 0 {
+		return ""
+	}
 	return strings.Repeat("#", 2*level+1)
 }
 
