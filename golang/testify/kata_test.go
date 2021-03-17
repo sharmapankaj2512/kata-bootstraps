@@ -94,11 +94,7 @@ func XMasTree(height int) []string {
 }
 
 func treeBody(level int) string {
-	tree := strings.Repeat("#", 2*level+1)
-	//for i := 0; i < level; i++ {
-	//	tree += "##"
-	//}
-	return tree
+	return strings.Repeat("#", 2*level+1)
 }
 
 func addTreeTrunk(tree []string, height int) []string {
