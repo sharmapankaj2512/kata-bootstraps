@@ -1,0 +1,9 @@
+faces north by default
+rotate right
+rotate left
+move up
+move down
+move left
+move right
+wrap up
+wrap right
